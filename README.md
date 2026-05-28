@@ -15,6 +15,12 @@ Lifecycle marketing pipelines routinely move raw PII into vendor systems before 
 
 One buyer-published Decision Card, three enforcement points.
 
+## Live visual demo
+
+Want to see this run in a browser? [skyyflow-klaviyo-bridge-console](https://github.com/mizcausevic-dev/skyyflow-klaviyo-bridge-console) is a React companion that pipes this engine through a live operator surface — webhook simulator with a 3-stage animated pipeline, field mapper, sync log stream, dashboard with charts. Same `transform()` function, just visible.
+
+![Bridge console — simulator running a webhook payload through the pipeline](./docs/console-simulator.png)
+
 ## What this is not
 
 - Not a hosted Skyyflow vault. The shipped `MockSkyyflowVault` is in-memory and deterministic — a real deployment swaps in an HTTP adapter behind the same `SkyyflowVault` interface.
