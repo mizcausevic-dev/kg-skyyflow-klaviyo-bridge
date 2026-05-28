@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "id": "01H7N0PROFILE1",
+      "email": "ava.lin@example.test",
+      "phone_number": "+1 415 555 0148",
+      "first_name": "Ava",
+      "last_name": "Lin",
+      "properties": {
+        "vip_segment": "true",
+        "internal_account_id": "acct-118822",
+        "ssn_last_four": "8421"
+      }
+    },
+    {
+      "id": "01H7N0PROFILE2",
+      "email": "marcus.diallo@example.test",
+      "phone_number": "+1 617 555 0233",
+      "first_name": "Marcus",
+      "last_name": "Diallo",
+      "properties": {
+        "vip_segment": "false",
+        "internal_account_id": "acct-330917"
+      }
+    },
+    {
+      "id": "01H7N0PROFILE3",
+      "email": "rosa.okonkwo@example.test",
+      "first_name": "Rosa",
+      "last_name": "Okonkwo",
+      "properties": {
+        "vip_segment": "true"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "decision_card_version": "0.2",
+  "decision_id": "kg-klaviyo-2026-Q2-001",
+  "decision_summary": "Authorize Skyyflow as the field-level vault for Klaviyo lifecycle marketing PII. Reveal limited to Growth Ops Lead and Compliance Officer during active campaign review.",
+  "data_vault_targets": [
+    {
+      "vendor": "skyyflow",
+      "vault_id": "kg-klaviyo-vault-2026-q2",
+      "vault_url": "https://kg-klaviyo.vault.skyyflowapis.example",
+      "fields_authorized": [
+        "email",
+        "phone_number",
+        "first_name",
+        "last_name"
+      ],
+      "reveal_roles": ["growth-ops-lead", "compliance-officer"],
+      "reveal_audit_uri": "https://kineticgain.com/.well-known/klaviyo-reveal-audit",
+      "notes": "Lifecycle marketing receives token-shaped profile records by default. Reveal is gated to two roles during active campaign review."
+    }
+  ]
+}
