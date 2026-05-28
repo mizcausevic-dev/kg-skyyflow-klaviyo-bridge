@@ -1,0 +1,11 @@
+{
+  "fields": [
+    { "rawField": "email", "klaviyoField": "$email", "protection": "tokenized", "dataType": "string" },
+    { "rawField": "firstName", "klaviyoField": "$first_name", "protection": "masked", "dataType": "string" },
+    { "rawField": "lastName", "klaviyoField": "$last_name", "protection": "masked", "dataType": "string" },
+    { "rawField": "phone", "klaviyoField": "$phone_number", "protection": "tokenized", "dataType": "string" },
+    { "rawField": "totalSpent", "klaviyoField": "TotalSpent", "protection": "none", "dataType": "number" },
+    { "rawField": "orderCount", "klaviyoField": "OrderCount", "protection": "none", "dataType": "number" },
+    { "rawField": "vipStatus", "klaviyoField": "VIP_Member", "protection": "none", "dataType": "boolean" }
+  ]
+}

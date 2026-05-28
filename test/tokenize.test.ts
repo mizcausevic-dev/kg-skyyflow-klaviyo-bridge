@@ -29,6 +29,7 @@ describe("tokenize", () => {
       "phone_number",
       "first_name",
       "last_name",
+      "phone",
     ]);
     const ava = vaultedExport.data.find((p) => p.id === "01H7N0PROFILE1");
     expect(ava?.email).toMatch(/^skyy_/);

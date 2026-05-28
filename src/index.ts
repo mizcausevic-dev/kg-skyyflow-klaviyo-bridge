@@ -4,6 +4,23 @@ export { audit, type AuditOptions } from "./audit.js";
 export { tokenize, type TokenizeOptions, type TokenizeResult } from "./tokenize.js";
 export { detokenize, type DetokenizeOptions, type DetokenizeResult } from "./detokenize.js";
 export {
+  transform,
+  type FieldTransform,
+  type SyncLog,
+  type TransformOptions,
+  type TransformOutcome,
+} from "./transform.js";
+export {
+  parseBridgeConfig,
+  activeFields,
+  InvalidBridgeConfigError,
+  type BridgeConfig,
+  type FieldDataType,
+  type MappingField,
+  type ProtectionLevel,
+} from "./mapping.js";
+export { maskEmail, maskField, maskGeneric, maskPhone } from "./mask.js";
+export {
   auditToMarkdown,
   auditToSummary,
   tokenizeEventsToMarkdown,

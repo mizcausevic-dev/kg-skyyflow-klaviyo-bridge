@@ -21,7 +21,7 @@ describe("audit", () => {
     expect(report.vendor).toBe("skyyflow");
     expect(report.decisionId).toBe("kg-klaviyo-2026-Q2-001");
     expect(report.profiles).toBe(3);
-    expect(report.fieldsAuthorized).toEqual(["email", "phone_number", "first_name", "last_name"]);
+    expect(report.fieldsAuthorized).toEqual(["email", "phone_number", "first_name", "last_name", "phone"]);
     expect(report.revealRoles).toEqual(["growth-ops-lead", "compliance-officer"]);
     // The fixture has profile properties (vip_segment, internal_account_id, ssn_last_four)
     // which the Decision Card does NOT authorize. Each should be flagged.

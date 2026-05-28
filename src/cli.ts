@@ -10,6 +10,8 @@ import { readFile, writeFile } from "node:fs/promises";
 import { audit } from "./audit.js";
 import { detokenize } from "./detokenize.js";
 import { tokenize } from "./tokenize.js";
+import { transform } from "./transform.js";
+import { parseBridgeConfig } from "./mapping.js";
 import {
   auditToMarkdown,
   auditToSummary,
@@ -22,7 +24,8 @@ import { MockSkyyflowVault } from "./vault/mock-vault.js";
 const USAGE = `Usage:
   kg-skyyflow-klaviyo audit <profiles.json> --decision-card <card.json> [--format markdown|summary]
   kg-skyyflow-klaviyo tokenize <profiles.json> --decision-card <card.json> [--out vaulted.json]
-  kg-skyyflow-klaviyo detokenize <vaulted.json> --role <caller-role> [--format markdown|json]`;
+  kg-skyyflow-klaviyo detokenize <vaulted.json> --role <caller-role> [--format markdown|json]
+  kg-skyyflow-klaviyo transform <payload.json> --bridge-config <config.json> --decision-card <card.json> --event-name <name>`;
 
 function readArg(args: string[], flag: string): string | undefined {
   const i = args.indexOf(flag);
@@ -99,6 +102,23 @@ async function main() {
       } else {
         console.log(detokenizeEventsToMarkdown(result.events));
       }
+      return;
+    }
+    case "transform": {
+      const bridgePath = readArg(rest, "--bridge-config");
+      const cardPath = readArg(rest, "--decision-card");
+      const eventName = readArg(rest, "--event-name") ?? "Webhook Event";
+      if (!bridgePath || !cardPath) {
+        console.error("transform: --bridge-config <path> and --decision-card <path> are required.");
+        process.exitCode = 1;
+        return;
+      }
+      const payload = await readJson<Record<string, unknown>>(input);
+      const bridgeConfig = parseBridgeConfig(await readJson<unknown>(bridgePath));
+      const card = await readJson<unknown>(cardPath);
+      const vault = new MockSkyyflowVault();
+      const syncLog = await transform(payload, bridgeConfig, card, vault, { eventName });
+      console.log(JSON.stringify(syncLog, null, 2));
       return;
     }
     default:

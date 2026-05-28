@@ -64,6 +64,27 @@ kg-skyyflow-klaviyo detokenize vaulted.json --role growth-ops-lead
 
 Walks every vaulted field and asks the vault to detokenize under the caller's role. Reveal is gated by `(callerRoles ∩ revealRoles)`. Every attempt — successful or denied — appears in the reveal audit table.
 
+### transform (v0.2)
+
+```bash
+kg-skyyflow-klaviyo transform fixtures/webhook-payload-templates.json \
+  --bridge-config fixtures/sample-bridge-config.json \
+  --decision-card fixtures/sample-decision-card.json \
+  --event-name "Order Placed"
+```
+
+Runs a single raw webhook payload through the full pipeline: applies per-field protection (`none` / `masked` / `tokenized`) per the bridge config, gates `tokenized` fields against the Decision Card's `fields_authorized`, and emits a Klaviyo-ready payload plus a complete sync log. `npm run demo:transform` runs all three bundled payload templates and prints results.
+
+## Per-field protection levels (v0.2)
+
+The Decision Card declares **which** raw fields may be vaulted. The bridge config declares **how** each field is transformed:
+
+| Protection | Behavior | Decision Card check |
+| --- | --- | --- |
+| `none` | Raw value passes through (with type coercion to `string` / `number` / `boolean`) | None — operator explicit |
+| `masked` | Field-shape-aware mask: `j••@example.test`, `+• ••• ••• 0148`, `M••••s` | None — no vault involvement |
+| `tokenized` | Vault-backed `skyy_<hex16>` token via the Skyyflow vault | Field **must** appear in `fields_authorized`. If not, the field is dropped and the sync log marks `unauthorized-tokenization` |
+
 > The shipped MockSkyyflowVault is single-process. Standalone `detokenize` against a previously-written `vaulted.json` will produce `denied-no-such-token` because the in-memory map is empty. Wire `tokenize | detokenize` in the same process, or replace the vault with a hosted adapter for cross-process reveal.
 
 ## Library

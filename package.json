@@ -1,6 +1,6 @@
 {
   "name": "kg-skyyflow-klaviyo-bridge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Skyyflow vault bridge for Klaviyo profile exports. Reads an AI Procurement Decision Card v0.2 and a Klaviyo profile snapshot, tokenizes authorized PII before it leaves the operator's machine, and gates detokenize reveal by caller role. Library + CLI.",
   "type": "module",
   "license": "AGPL-3.0-or-later",
@@ -51,6 +51,7 @@
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "demo": "tsx src/cli.ts audit fixtures/sample-klaviyo-profiles.json --decision-card fixtures/sample-decision-card.json",
+    "demo:transform": "tsx scripts/demo_transform.ts",
     "verify": "npm run typecheck && npm run coverage && npm run build && npm run demo",
     "prepublishOnly": "npm run build"
   },

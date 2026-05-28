@@ -11,7 +11,8 @@
         "email",
         "phone_number",
         "first_name",
-        "last_name"
+        "last_name",
+        "phone"
       ],
       "reveal_roles": ["growth-ops-lead", "compliance-officer"],
       "reveal_audit_uri": "https://kineticgain.com/.well-known/klaviyo-reveal-audit",

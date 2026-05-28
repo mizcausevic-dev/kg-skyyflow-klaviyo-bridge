@@ -1,0 +1,36 @@
+{
+  "order_placed": {
+    "eventName": "Order Placed",
+    "payload": {
+      "email": "ava.lin@example.test",
+      "firstName": "Ava",
+      "lastName": "Lin",
+      "phone": "+1 415 555 0148",
+      "totalSpent": "1250.00",
+      "orderCount": 4,
+      "vipStatus": true
+    }
+  },
+  "checkout_started": {
+    "eventName": "Checkout Started",
+    "payload": {
+      "email": "marcus.diallo@example.test",
+      "firstName": "Marcus",
+      "lastName": "Diallo",
+      "phone": "+1 617 555 0233",
+      "totalSpent": "0.00",
+      "orderCount": 0,
+      "vipStatus": false
+    }
+  },
+  "new_subscriber": {
+    "eventName": "Newsletter Subscribed",
+    "payload": {
+      "email": "rosa.okonkwo@example.test",
+      "firstName": "Rosa",
+      "lastName": "Okonkwo",
+      "totalSpent": "0",
+      "orderCount": 0
+    }
+  }
+}
